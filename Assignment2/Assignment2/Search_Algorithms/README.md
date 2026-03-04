@@ -1,47 +1,60 @@
-# Uninformed Search Algorithms
+# Uninformed Search Algorithms: BFS and DFS using Tic Tac Toe
 
-Uninformed search algorithms explore the search space without any additional information about the goal state. They rely only on the structure of the problem.
+Uninformed search algorithms explore the search space without using additional knowledge about the goal state. They only use the structure of the problem to explore possible states. Two common uninformed search strategies are Breadth First Search (BFS) and Depth First Search (DFS).
+
+In games like Tic Tac Toe, the search space consists of all possible board configurations that can occur from the starting position.
+
+---
 
 ## Breadth First Search (BFS)
 
-BFS explores nodes level by level. It first visits the root node, then all neighbors, and then their neighbors.
+Breadth First Search explores the game tree level by level. It first examines all possible moves from the initial board state before exploring deeper moves.
+
+In Tic Tac Toe, BFS works by:
+1. Starting from the initial empty board.
+2. Generating all possible moves for the first player.
+3. Exploring all resulting board states before moving to deeper levels of the game tree.
 
 ### Characteristics
-- Uses Queue (FIFO)
-- Complete
-- Optimal for equal cost paths
-- Higher memory usage
+- Uses a **Queue (FIFO)** data structure.
+- Explores nodes **level by level**.
+- **Guaranteed to find the shortest solution path**.
+- Requires **large memory** because it stores many nodes at each level.
 
 ---
 
 ## Depth First Search (DFS)
 
-DFS explores nodes as deep as possible before backtracking.
+Depth First Search explores one branch of the game tree as deeply as possible before backtracking to explore other branches.
+
+In Tic Tac Toe, DFS works by:
+1. Starting from the empty board.
+2. Choosing one possible move.
+3. Continuing to explore moves from that state until the game ends.
+4. Backtracking to explore other possible moves.
 
 ### Characteristics
-- Uses Stack or Recursion
-- Less memory than BFS
-- Not always optimal
-- May get stuck in deep paths
+- Uses a **Stack or Recursion**.
+- Explores **one branch deeply before others**.
+- Uses **less memory than BFS**.
+- May explore unnecessary deep branches before finding a solution.
 
 ---
 
-## Performance Comparison
+## BFS vs DFS in Tic Tac Toe
 
-| Algorithm | Data Structure | Completeness | Optimality | Memory |
-|----------|---------------|-------------|------------|--------|
-| BFS | Queue | Yes | Yes | High |
-| DFS | Stack | No | No | Low |
+| Feature | BFS | DFS |
+|-------|------|------|
+| Data Structure | Queue | Stack / Recursion |
+| Search Style | Level-by-level | Deep exploration |
+| Memory Usage | High | Low |
+| Optimal Solution | Yes | Not always |
+| Speed | Slower in large trees | Faster but may explore wrong paths |
 
 ---
 
-## Example Problem
+## Performance in Tic Tac Toe
 
-Example search problems include:
+In Tic Tac Toe, BFS systematically explores all possible board states level by level, which guarantees finding the optimal solution but consumes more memory. DFS explores one possible sequence of moves until the game ends, which requires less memory but may explore many unnecessary paths before finding the best move.
 
-- Tic Tac Toe
-- Eight Queens Problem
-- Missionaries and Cannibals
-- Water Jug Problem
-
-In this assignment BFS and DFS algorithms are implemented in C to demonstrate how uninformed search strategies explore the state space.
+Therefore, BFS is more reliable for finding optimal strategies, while DFS is more memory efficient but less predictable in performance.
